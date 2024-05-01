@@ -65,7 +65,7 @@ const makeEvent = (data) => {
     location.reload(true);
   });
 };
-
+// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일// 김동헌이 첫 번째로 올리는 파일
 function getMovieCode(movie) {
   console.log(movie);
   const { id, poster_path, title, overview, vote_average } = movie; // alert에서 밖에 "없이 띄어쓰기 하면 오류나는 이유..?
