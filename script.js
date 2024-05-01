@@ -56,7 +56,7 @@ const makeEvent = (data) => {
     search(data);
   });
   searchInput.addEventListener("keyup", (event) => {
-    if (event.keyCode == 13) {
+    if (event.key == "Enter") {
       search(data);
     }
   });
