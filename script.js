@@ -34,7 +34,7 @@ const search = (data) => {
   }
   editId.innerHTML = null;
   const element = document.querySelector(".cards");
-  element.style.margin = "0px";
+  // element.style.margin = "0px";
   for (let i = 0; i < filteredArr.length; i++) {
     editId.innerHTML += getMovieCode(filteredArr[i]);
   }
@@ -70,12 +70,11 @@ function getMovieCode(movie) {
   console.log(movie);
   const { id, poster_path, title, overview, vote_average } = movie; // alert에서 밖에 "없이 띄어쓰기 하면 오류나는 이유..?
   // const movieCode = `<div onclick="alert('영화 id: ' + '${id}')" id="${id}" class="card">
-  const movieCode = `<div id="${id}" class="card">
-          <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top">
-          <h2 class="card-title">${title}</h2>
-          <p class="card-text">${overview}</p>
-          <p></p>
-          <p class="card-rating">Rating: ${vote_average}</p>
+  const movieCode = `<div id="${id}" class="card col-3 card_custom">
+          <h3 class="card-title">${title}</h3>
+          <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >
+          <button style="color:black;" class="More_btn">상세정보</button>
+          
         </div>`;
   return movieCode;
 }
