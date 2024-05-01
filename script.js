@@ -39,7 +39,7 @@ const search = (data) => {
     editId.innerHTML += getMovieCode(filteredArr[i]);
   }
   return;
-};z
+};
 
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
