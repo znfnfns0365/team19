@@ -56,7 +56,7 @@ const makeEvent = (data) => {
     search(data);
   });
   searchInput.addEventListener("keyup", (event) => {
-    if (event.keyCode == 13) {
+    if (event.key == "Enter") {
       search(data);
     }
   });
@@ -67,6 +67,7 @@ const makeEvent = (data) => {
 };
 
 function getMovieCode(movie) {
+  console.log(movie);
   const { id, poster_path, title, overview, vote_average } = movie; // alert에서 밖에 "없이 띄어쓰기 하면 오류나는 이유..?
   // const movieCode = `<div onclick="alert('영화 id: ' + '${id}')" id="${id}" class="card">
   const movieCode = `<div id="${id}" class="card">
