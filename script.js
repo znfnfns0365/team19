@@ -6,6 +6,15 @@ const titleClick = document.getElementById("title");
 
 // getElementById와 querySelector 차이 (ID를 불러올 때)
 
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZGM4OGNlYWFlNzM1MTU1ZDM5YzZhZDNjZTFlN2FiYiIsInN1YiI6IjY2MmI0ZWY5NWMwNzFiMDExYzVlOGEwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hNpJDRr1L7kWApfidXYuOYPhFYLWnSW_z-oQuq0VEwo"
+  }
+};
+
 const fetchMovie = async () => {
   const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options);
   const dataResponsed = await data.json();
@@ -20,7 +29,7 @@ const search = (data) => {
     return cmp.includes(searchInput.value.toLowerCase());
   });
   if (filteredArr.length == 0) {
-    alert("검색 결과");
+    alert("검색 결과가 없습니다");
     return;
   }
   editId.innerHTML = null;
@@ -30,7 +39,7 @@ const search = (data) => {
     editId.innerHTML += getMovieCode(filteredArr[i]);
   }
   return;
-};z
+};
 
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
@@ -68,3 +77,16 @@ function getMovieCode(movie) {
         </div>`;
   return movieCode;
 }
+
+
+function displayMovies(data) {
+  data.results.forEach((movie) => {
+    editId.innerHTML += getMovieCode(movie);
+  });
+}
+
+window.onload = function () {
+  searchInput.focus();
+};
+
+fetchMovie();
