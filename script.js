@@ -6,12 +6,6 @@ const titleClick = document.getElementById("title");
 
 // getElementById와 querySelector 차이 (ID를 불러올 때)
 
-        // 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312
-        // 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312
-        // 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312// 테스트 텍스트 phg0520  132313131312
-
-
-
 const fetchMovie = async () => {
   const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options);
   const dataResponsed = await data.json();
