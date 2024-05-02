@@ -29,7 +29,7 @@ const search = (data) => {
     return cmp.includes(searchInput.value.toLowerCase());
   });
   if (filteredArr.length == 0) {
-    alert("검색 결과가 없습니다");
+    alert("검색 결과가 없습니다.");
     return;
   }
   editId.innerHTML = null;
