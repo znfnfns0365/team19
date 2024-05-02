@@ -78,7 +78,6 @@ function getMovieCode(movie) {
   return movieCode;
 }
 
-
 function displayMovies(data) {
   data.results.forEach((movie) => {
     editId.innerHTML += getMovieCode(movie);
