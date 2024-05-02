@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        textarea {
+            border-radius: 10px;
+            /* 모서리를 10px만큼 둥글게 깎습니다 */
+            padding: 10px;
+            /* 내용과 테두리 사이의 간격을 설정합니다 */
+            width: 500px;
+            height: 100px;
+            padding-top: 5px;
+
+        }
+
+        input {
+            border-radius: 10px;
+            /* 모서리를 10px만큼 둥글게 깎습니다 */
+            padding: 10px;
+            /* 내용과 테두리 사이의 간격을 설정합니다 */
+        }
+    </style>
+</head>
+
+<body>
+    <!--리뷰 작성-->
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name : </label>
+        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="exampleFormControlInput1" class="form-label">Password : </label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="●●●●">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Message</label></br>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button>입력</button>
+        <button>수정 및 삭제</button>
+    </div>
+
+    <!--작성된 리뷰-->
+    <div>
+
+    </div>
+
+    <!-- 모달 -->
+    <div class="modal">
+        <label for="exampleFormControlInput1" class="form-label">Name : </label>
+        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></br>
+        <label for="exampleFormControlInput1" class="form-label">Password : </label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="●●●●">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Message</label></br>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></br>
+            <div>
+                <button class="btn btn-danger">삭제</button>
+                <div style="float: right;">
+                    <button type="changebtn">수정</button>
+                    <button type="cancelbtn">취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
