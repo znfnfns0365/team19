@@ -44,11 +44,11 @@ const search = (data) => {
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
 
-  // if (event.target.matches(".card")) {
-  //   alert(`영화 id: ${event.target.id}`);
-  // } else {
-  //   alert(`영화 id: ${event.target.parentNode.id}`);
-  // }
+  if (event.target.matches(".card")) {
+    alert(`영화 id: ${event.target.id}`);
+  } else {
+    alert(`영화 id: ${event.target.parentNode.id}`);
+  }
 }
 
 const makeEvent = (data) => {
@@ -67,13 +67,12 @@ const makeEvent = (data) => {
 };
 
 function getMovieCode(movie) {
-  console.log(movie);
   const { id, poster_path, title, overview, vote_average } = movie; // alert에서 밖에 "없이 띄어쓰기 하면 오류나는 이유..?
   // const movieCode = `<div onclick="alert('영화 id: ' + '${id}')" id="${id}" class="card">
   const movieCode = `<div id="${id}" class="card col-3 card_custom">
           <h3 class="card-title">${title}</h3>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >
-          
+          <button style="color:black;" class="More_btn">상세정보</button>
           
         </div>`;
   return movieCode;
