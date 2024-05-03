@@ -6,53 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            cursor: pointer;
-            margin: 0 auto;
-        }
-
-        input {
-            border-radius: 10px;
-            padding: 10px;
-            width: 100%;
-            max-width: 200px;
-            margin-right: 10px;
-            text-align: left;
-        }
-
-        #msg {
-            width: 580px;
-        }
-
-        .comment {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-top: 1px solid #dee2e6;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .author {
-            font-weight: bold;
-        }
-
-        .time {
-            color: #6c757d;
-            font-size: 0.8em;
-        }
-
-        .container{
-            width: 100%;
-            max-width: 885px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/review.css">
 </head>
 
 <body>
@@ -76,9 +30,9 @@
                 <div class="comment row">
                     <div class="col">
                         <div class="author fw-bold">name</div>
-                        <!-- <div class="col-auto">
+                        <div class="col-auto">
                             <div class="time">24-05-03 11:45</div>
-                        </div> -->
+                        </div>
                         <div class="content mt-2">
                             내용
                         </div>
@@ -91,9 +45,9 @@
                 <div class="comment row">
                     <div class="col">
                         <div class="author fw-bold">이름</div>
-                        <!-- <div class="col-auto">
+                        <div class="col-auto">
                             <div class="time">24-05-03 11:45</div>
-                        </div> -->
+                        </div>
                         <div class="content mt-2">
                             내용2
                         </div>
@@ -107,27 +61,24 @@
     </div>
 
     <!-- 모달 -->
-    <div class="modal" style="align-items: baseline;">
-        <div class="mb-3" >
-            <label for="exampleFormControlInput1" class="form-label">Name : </label>
-            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
+    <div class="modal">
+        <label for="exampleFormControlInput1" class="form-label">Name : </label>
+        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></br>
+        <label for="exampleFormControlInput1" class="form-label">Password : </label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="●●●●">
         <div class="mb-3">
-            <label for="exampleFormControlInput2" class="form-label">Password : </label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="●●●●">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-            <textarea class="form-control" id="msg" rows="3"></textarea>
-        </div>
-        <div>
-            <button class="btn btn-danger" style="float: left;">삭제</button>
-            <div style="float: right;">
-                <button type="changebtn">수정</button>
-                <button type="cancelbtn">취소</button>
+            <label for="exampleFormControlTextarea1" class="form-label">Message</label></br>
+            <textarea class="form-control" id="msg" rows="3"></textarea></br>
+            <div>
+                <button class="btn btn-danger">삭제</button>
+                <div style="float: right;">
+                    <button type="changebtn">수정</button>
+                    <button type="cancelbtn">취소</button>
+                </div>
             </div>
         </div>
-    
+    </div>
+
 
 
 
