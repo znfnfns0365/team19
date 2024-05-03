@@ -34,7 +34,6 @@ input {
 }
 
 .container {
-    /* width: 100%; */ /* 한 줄 삭제 */
     max-width: 885px;
 }
 
@@ -43,12 +42,12 @@ input {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: black;
+    background-color: gray;
     padding: 20px;
+    padding-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
     z-index: 9999;
-    align-items: baseline;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 620px;
+    height: auto;
 }
