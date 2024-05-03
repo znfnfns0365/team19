@@ -6,18 +6,77 @@ const getName = document.querySelector("#exampleFormControlInput1");
 const getPassword = document.querySelector("#exampleFormControlInput2");
 const getMessage = document.querySelector("#msg");
 const reviewSpace = document.querySelector("#reviewSpace");
+const modalName = document.querySelector("#modalName");
+const modalPassword = document.querySelector("#modalPassword");
+const modalMessage = document.querySelector("#modalMessage");
+const deleteButton = document.getElementById("deleteButton");
+const editButton = document.getElementById("editButton");
+
 let buttonEditDelete = document.querySelector(".btn.btn-danger");
 // const  = document.querySelector("");
 
-cancelButton.addEventListener('click', function () {
+function editOrDelete(kind, ID) { // 수정 혹은 삭제
+    console.log(ID);
+    if (modalPassword.value !== localStorage.getItem(ID + 'pw')) { // 비밀번호 검사
+        alert("비밀번호가 일치하지 않습니다!");
+        return;
+    }
+    let editIDs = localStorage.getItem('IDs').split(",");
+    editIDs = editIDs.filter(function (val) {    // IDs에서 ID삭제
+        return val != ID;
+    });
+    if (kind === 'delete') { // 삭제
+        localStorage.removeItem(ID + 'name');
+        localStorage.removeItem(ID + 'msg');
+        localStorage.removeItem(ID + 'pw');
+        localStorage.removeItem(ID + 'time');
+        alert("삭제가 완료되었습니다.");
+    } else { // 수정
+
+        if (localStorage.length !== 0) {
+            let IDs = editIDs;
+            if (IDs.find(val => val === ID)) {
+                let a = 0;
+                while (IDs.find(val => val === ID + a)) {
+                    a++;
+                }
+                ID += a;
+            }
+        }
+        localStorage.setItem(modalName.value + 'name', modalName.value);
+        localStorage.setItem(modalName.value + 'msg', modalMessage.value);
+        localStorage.setItem(modalName.value + 'pw', modalPassword.value);
+        const today = new Date().toLocaleString();
+        localStorage.setItem(modalName.value + 'time', today);
+    }
+    localStorage.setItem('IDs', editIDs);
     modal.style.display = 'none';
-})
+    location.reload(true);
+}
 
 function makeEvent(data) { // 수정 및 삭제
     data.addEventListener('click', function (element) {
-        console.log(element);
-        console.log(element.target);
+        console.log(element.target.id);
+        const ID = element.target.id;
+        modalName.value = localStorage.getItem(ID + 'name');
+        modalMessage.value = localStorage.getItem(ID + 'msg');
         modal.style.display = 'block';
+        deleteButton.addEventListener('click', function () { // 삭제 버튼
+            editOrDelete('delete', ID)
+        });
+        editButton.addEventListener('click', function () { // 수정 버튼
+            editOrDelete('edit', ID)
+        });
+        cancelButton.addEventListener('click', function () { // 취소 버튼
+            modal.style.display = 'none';
+            deleteButton.removeEventListener('click', function () {
+                editOrDelete('delete', ID)
+            });
+            console.log("했다ㅗㄱ ㅣ숮ㄹ");
+            editButton.removeEventListener('click', function () {
+                editOrDelete('edit', ID)
+            });
+        })
     });
 }
 
@@ -25,7 +84,7 @@ function addReview(data) { // 리뷰 추가
     let { ID, name, msg, time } = data;
     let toChange = document.createElement('div');
     toChange.innerHTML = `
-    <div class="comment row" id="${ID}">
+    <div class="comment row">
         <div class="col">
             <div class="author fw-bold">${name}</div>
             <div class="col-auto">
@@ -34,7 +93,7 @@ function addReview(data) { // 리뷰 추가
             <div class="content mt-2">${msg}</div>
         </div>
         <div class="col-auto">
-            <button class="btn btn-danger" style="margin-right: -16px; margin-top: 9px;">수정 및 삭제</button>
+            <button class="btn btn-danger" id="${ID}" style="margin-right: -16px; margin-top: 9px;">수정 및 삭제</button>
         </div>
     </div>`;
     reviewSpace.appendChild(toChange);
@@ -64,7 +123,7 @@ makeButton.addEventListener('click', function () { // 입력 누를 시
         msg: msg,
         time: today
     }
-    addReview(data);
+    addReview(data); // 코드 추가
 
     let editIDs = localStorage.getItem('IDs'); // editIDs에 ID들 불러오기
     if (editIDs === null) editIDs = [];
@@ -78,7 +137,7 @@ makeButton.addEventListener('click', function () { // 입력 누를 시
 });
 
 function showReview() { // 리뷰 불러오기
-    if (localStorage.length == 0) return; 
+    if (localStorage.length == 0 || localStorage.getItem("IDs")=='') return;
     let IDs = localStorage.getItem('IDs').split(",");  // IDs 가져와서
     for (let i = 0; i < IDs.length; i++) { // ID에 맞는 것들 get 해서 출력
         const ID = IDs[i];
