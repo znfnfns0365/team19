@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+
     margin: auto;
     background-color: wheat;
 }
@@ -7,16 +8,20 @@ body {
     background-position: center;
     background-size: cover;
     background: rgb(185, 185, 185);
-    padding: auto;
     text-align: center;
     margin: auto;
+
 }    
 
+        /* 이미지 크기 조절
+iamge {
+    width: 20%;
+    height: 100%; 
+} */
+
 #title {
-    background-position: center;
-    background-size: cover;
     background: rgb(204, 95, 68);
-    padding: 1.5%;
+    padding: 2%;
     margin: auto;
     text-align: center;
     font-weight: bold;
@@ -24,8 +29,8 @@ body {
 
 .detail {
     background-color: rgb(255, 214, 138);
-    margin: 3%;
-    padding: 4%;
+    margin: 4%;
+    padding: 2%;
     text-align: left;
     font-weight: bold;
 }
