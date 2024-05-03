@@ -32,13 +32,19 @@ input {
 .author {
     font-weight: bold;
 }
-
+/* 
 .time {
     color: #6c757d;
     font-size: 0.8em;
-}
+} */
 
 .container{
     width: 100%;
     max-width: 885px;
+}
+.modal{
+    background-color: black;
+    align-items: baseline;
+    max-width: 400px;
+    margin: 0 auto;
 }
