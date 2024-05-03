@@ -58,13 +58,13 @@ makeButton.addEventListener('click', function () { // 입력 누를 시
             ID += a;
         }
     }
-    const a = {
+    const data = {
         ID: ID,
         name: name,
         msg: msg,
         time: today
     }
-    addReview(a);
+    addReview(data);
 
     let editIDs = localStorage.getItem('IDs'); // editIDs에 ID들 불러오기
     if (editIDs === null) editIDs = [];
@@ -86,13 +86,13 @@ function showReview() { // 리뷰 불러오기
         const pw = localStorage.getItem(ID + 'pw');
         const msg = localStorage.getItem(ID + 'msg');
         const time = localStorage.getItem(ID + 'time');
-        const a = {
+        const data = {
             ID: ID,
             name: name,
             msg: msg,
             time: time
         }
-        addReview(a);
+        addReview(data);
     }
 }
 
