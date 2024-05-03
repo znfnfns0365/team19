@@ -48,8 +48,6 @@ function cardClicked(event) {
     alert(`영화 id: ${event.target.id}`);
   } else {
     localStorage.setItem(`exportId`, event.target.parentNode.id);
-출처: https://kgu0724.tistory.com/229 [병아리 개발자의 이야기:티스토리]
-
     window.location.href = "http://127.0.0.1:5501/indexsw.html";
     alert(`영화 id: ${event.target.parentNode.id}`);
   }
