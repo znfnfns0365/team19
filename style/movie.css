@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    background-color: wheat;
+}
+#movie_image {
+    background-position: center;
+    background-size: cover;
+    background: rgb(185, 185, 185);
+    padding: auto;
+    text-align: center;
+    margin: auto;
+}    
+
+#title {
+    background-position: center;
+    background-size: cover;
+    background: rgb(204, 95, 68);
+    padding: 1.5%;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.detail {
+    background-color: rgb(255, 214, 138);
+    margin: 3%;
+    padding: 4%;
+    text-align: left;
+    font-weight: bold;
+}
+
+#back {
+    padding: 1%;
+}
