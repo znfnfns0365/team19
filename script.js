@@ -44,11 +44,11 @@ const search = (data) => {
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
 
-  // if (event.target.matches(".card")) {
-  //   alert(`영화 id: ${event.target.id}`);
-  // } else {
-  //   alert(`영화 id: ${event.target.parentNode.id}`);
-  // }
+  if (event.target.matches(".card")) {
+    alert(`영화 id: ${event.target.id}`);
+  } else {
+    alert(`영화 id: ${event.target.parentNode.id}`);
+  }
 }
 
 const makeEvent = (data) => {
@@ -72,7 +72,7 @@ function getMovieCode(movie) {
   const movieCode = `<div id="${id}" class="card col-3 card_custom">
           <h3 class="card-title">${title}</h3>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >
-          
+          <button style="color:black;" class="More_btn">상세정보</button>
           
         </div>`;
   return movieCode;
@@ -89,3 +89,5 @@ window.onload = function () {
 };
 
 fetchMovie();
+
+
