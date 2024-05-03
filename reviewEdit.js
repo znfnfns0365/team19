@@ -25,29 +25,28 @@ function editOrDelete(kind, ID) { // 수정 혹은 삭제
     editIDs = editIDs.filter(function (val) {    // IDs에서 ID삭제
         return val != ID;
     });
-    if (kind === 'delete') { // 삭제
-        localStorage.removeItem(ID + 'name');
-        localStorage.removeItem(ID + 'msg');
-        localStorage.removeItem(ID + 'pw');
-        localStorage.removeItem(ID + 'time');
+    localStorage.removeItem(ID + 'name');
+    localStorage.removeItem(ID + 'msg');
+    localStorage.removeItem(ID + 'pw');
+    localStorage.removeItem(ID + 'time');
+    if (kind === 'delete') {
         alert("삭제가 완료되었습니다.");
     } else { // 수정
-
-        if (localStorage.length !== 0) {
-            let IDs = editIDs;
-            if (IDs.find(val => val === ID)) {
-                let a = 0;
-                while (IDs.find(val => val === ID + a)) {
-                    a++;
-                }
-                ID += a;
+        let IDs = editIDs, changeId = modalName.value;
+        if (IDs.find(val => val === changeId)) {
+            let a = 0;
+            while (IDs.find(val => val === changeId + a)) {
+                a++;
             }
+            changeId += a;
         }
-        localStorage.setItem(modalName.value + 'name', modalName.value);
-        localStorage.setItem(modalName.value + 'msg', modalMessage.value);
-        localStorage.setItem(modalName.value + 'pw', modalPassword.value);
+        localStorage.setItem(changeId + 'name', modalName.value);
+        localStorage.setItem(changeId + 'msg', modalMessage.value);
+        localStorage.setItem(changeId + 'pw', modalPassword.value);
         const today = new Date().toLocaleString();
-        localStorage.setItem(modalName.value + 'time', today);
+        localStorage.setItem(changeId + 'time', today);
+        editIDs.push(changeId);
+        alert("수정이 완료되었습니다.");
     }
     localStorage.setItem('IDs', editIDs);
     modal.style.display = 'none';
@@ -56,27 +55,24 @@ function editOrDelete(kind, ID) { // 수정 혹은 삭제
 
 function makeEvent(data) { // 수정 및 삭제
     data.addEventListener('click', function (element) {
-        console.log(element.target.id);
         const ID = element.target.id;
         modalName.value = localStorage.getItem(ID + 'name');
         modalMessage.value = localStorage.getItem(ID + 'msg');
         modal.style.display = 'block';
-        deleteButton.addEventListener('click', function () { // 삭제 버튼
-            editOrDelete('delete', ID)
-        });
-        editButton.addEventListener('click', function () { // 수정 버튼
-            editOrDelete('edit', ID)
-        });
-        cancelButton.addEventListener('click', function () { // 취소 버튼
+        function deleteEventHandler() {
+            editOrDelete('delete', ID);
+        }
+        function editEventHandler() {
+            editOrDelete('edit', ID);
+        }
+        function cancelEventHandler() {
             modal.style.display = 'none';
-            deleteButton.removeEventListener('click', function () {
-                editOrDelete('delete', ID)
-            });
-            console.log("했다ㅗㄱ ㅣ숮ㄹ");
-            editButton.removeEventListener('click', function () {
-                editOrDelete('edit', ID)
-            });
-        })
+            deleteButton.removeEventListener('click', deleteEventHandler);
+            editButton.removeEventListener('click', editEventHandler);
+        }
+        deleteButton.addEventListener('click', deleteEventHandler);
+        editButton.addEventListener('click', editEventHandler);
+        cancelButton.addEventListener('click', cancelEventHandler);
     });
 }
 
@@ -134,10 +130,14 @@ makeButton.addEventListener('click', function () { // 입력 누를 시
     localStorage.setItem(ID + "pw", pw);
     localStorage.setItem(ID + "msg", msg);
     localStorage.setItem(ID + "time", today);
+
+    getName.value=null;
+    getPassword.value=null;
+    getMessage.value=null;
 });
 
 function showReview() { // 리뷰 불러오기
-    if (localStorage.length == 0 || localStorage.getItem("IDs")=='') return;
+    if (localStorage.length == 0 || localStorage.getItem("IDs") == '') return;
     let IDs = localStorage.getItem('IDs').split(",");  // IDs 가져와서
     for (let i = 0; i < IDs.length; i++) { // ID에 맞는 것들 get 해서 출력
         const ID = IDs[i];
