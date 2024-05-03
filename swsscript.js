@@ -1,12 +1,7 @@
-var button = document.querySelector('.href');
-
-button.addEventListener("click", function(){
-  window.location.href = "http://127.0.0.1:5501/index.html";
-});
 
 var button = document.querySelector('.href');
 
-button.addEventListener("click", function(){
+button.addEventListener("click", function () {
   window.location.href = "http://127.0.0.1:5501/index.html";
 });
 
@@ -23,7 +18,7 @@ const options = {
 const fetchMovieData = async () => {
   const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options);
   const dataResponsed = await data.json();
-  return dataResponsed.results; 
+  return dataResponsed.results;
 };
 
 const makeMovieCard = async () => {
@@ -31,26 +26,31 @@ const makeMovieCard = async () => {
   const cardList = document.querySelector('.cardList');
   if (cardList) {
     cardList.innerHTML = movies.map(
-        (movie) => `
+      (movie) => `
       <div class="movieCard" id="${movie.id}">
-        <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="card-img-top" >
-        <h3 class="cardTitle">${movie.title}</h3>
-        <p>${movie.overview}</p>
-        <p>${movie.release_date}</p>
-        <p>Rating : ${movie.vote_average}</p>
+      <h1>${movie.title}</h1>
+        <div class="movie_image">
+          <img id="test" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" >
+          <div class="cardText" style="float:right">
+          <h4>Date : ${movie.release_date}</h4>
+          <h4>Rating : ${movie.vote_average}</h4>
+          <h3>Story Line<h3>
+          <h4 id="text">${movie.overview}</h4>
+          </div>
+        </div>
       </div>`
-      )
+    )
       .join("");
-      handleSearch();
+    handleSearch();
   } else {
     console.error("The element with class 'cardList' was not found.");
   }
-}; 
+};
 
 const handleSearch = () => {
   const movieCards = document.querySelectorAll('.movieCard');
 
-  movieCards.forEach((card) => { 
+  movieCards.forEach((card) => {
     const cardId = card.id; // id를 가져오rp
     const exportId = localStorage.getItem('exportId');
 

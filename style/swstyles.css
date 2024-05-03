@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: auto;
+  background-color: wheat;
+}
+
+header {
+  background-image: url("../image/curtaincall.jpg");
+  background-position: center;
+  background-size: cover;
+  color: black;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.movieCard{
+  font-size: 36px;
+
+  position: relative;
+  left: 10%;
+}
+
+.cardText{
+  position: absolute;
+  text-align: left;
+  width: 36%;
+}
+
+img {
+  width: 30%;
+  height: 1000%;
+  position: absolute;
+  left : 45%;
+}
+
