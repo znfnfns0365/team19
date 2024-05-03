@@ -30,32 +30,18 @@
                 <div class="comment row">
                     <div class="col">
                         <div class="author fw-bold">name</div>
-                        <div class="col-auto">
+                        <!-- <div class="col-auto">
                             <div class="time">24-05-03 11:45</div>
-                        </div>
+                        </div> -->
                         <div class="content mt-2">
                             내용
                         </div>
                     </div>
                     <div class="col-auto">
-                        <button class="btn btn-danger">수정 및 삭제</button>
+                        <button class="btn btn-danger" id="editButton">수정 및 삭제</button>
                     </div>
                 </div>
 
-                <div class="comment row">
-                    <div class="col">
-                        <div class="author fw-bold">이름</div>
-                        <div class="col-auto">
-                            <div class="time">24-05-03 11:45</div>
-                        </div>
-                        <div class="content mt-2">
-                            내용2
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-danger">수정 및 삭제</button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -65,7 +51,7 @@
         <label for="exampleFormControlInput1" class="form-label">Name : </label>
         <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></br>
         <label for="exampleFormControlInput1" class="form-label">Password : </label>
-        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="●●●●">
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="●●●●"></br>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Message</label></br>
             <textarea class="form-control" id="msg" rows="3"></textarea></br>
@@ -73,7 +59,7 @@
                 <button class="btn btn-danger">삭제</button>
                 <div style="float: right;">
                     <button type="changebtn">수정</button>
-                    <button type="cancelbtn">취소</button>
+                    <button type="cancelbtn" id="cancelButton">취소</button>
                 </div>
             </div>
         </div>
@@ -81,7 +67,7 @@
 
 
 
-
+    <script type="module" src="reviewEdit.js"></script>
 </body>
 
 </html>
