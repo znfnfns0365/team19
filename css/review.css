@@ -32,19 +32,23 @@ input {
 .author {
     font-weight: bold;
 }
-/* 
-.time {
-    color: #6c757d;
-    font-size: 0.8em;
-} */
 
-.container{
-    width: 100%;
+.container {
+    /* width: 100%; */ /* 한 줄 삭제 */
     max-width: 885px;
 }
-.modal{
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    z-index: 9999;
     align-items: baseline;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
 }
