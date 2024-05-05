@@ -168,5 +168,3 @@ function showReview() {
 }
 
 showReview();
-
-// 수정 및 삭제 페이지에서 처음에 pw빼고 다 입력 해놓고 pw랑 수정 누르면 수정, pw넣고 삭제 누르면 삭제
