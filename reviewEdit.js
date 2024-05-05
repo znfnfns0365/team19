@@ -15,71 +15,79 @@ const editButton = document.getElementById("editButton");
 let buttonEditDelete = document.querySelector(".btn.btn-danger");
 // const  = document.querySelector("");
 
-function editOrDelete(kind, ID) { // 수정 혹은 삭제
-    console.log(ID);
-    if (modalPassword.value !== localStorage.getItem(ID + 'pw')) { // 비밀번호 검사
-        alert("비밀번호가 일치하지 않습니다!");
-        return;
+function editOrDelete(kind, ID) {
+  // 수정 혹은 삭제
+  console.log(ID);
+  if (modalPassword.value !== localStorage.getItem(ID + "pw")) {
+    // 비밀번호 검사
+    alert("비밀번호가 일치하지 않습니다!");
+    return;
+  }
+  let editIDs = localStorage.getItem("IDs").split(",");
+  editIDs = editIDs.filter(function (val) {
+    // IDs에서 ID삭제
+    return val != ID;
+  });
+  localStorage.removeItem(ID + "name");
+  localStorage.removeItem(ID + "msg");
+  localStorage.removeItem(ID + "pw");
+  localStorage.removeItem(ID + "time");
+  if (kind === "delete") {
+    alert("삭제가 완료되었습니다.");
+  } else {
+    // 수정
+    let IDs = editIDs,
+      changeId = modalName.value;
+    if (IDs.find((val) => val === changeId)) {
+      let a = 0;
+      while (IDs.find((val) => val === changeId + a)) {
+        a++;
+      }
+      changeId += a;
     }
-    let editIDs = localStorage.getItem('IDs').split(",");
-    editIDs = editIDs.filter(function (val) {    // IDs에서 ID삭제
-        return val != ID;
-    });
-    localStorage.removeItem(ID + 'name');
-    localStorage.removeItem(ID + 'msg');
-    localStorage.removeItem(ID + 'pw');
-    localStorage.removeItem(ID + 'time');
-    if (kind === 'delete') {
-        alert("삭제가 완료되었습니다.");
-    } else { // 수정
-        let IDs = editIDs, changeId = modalName.value;
-        if (IDs.find(val => val === changeId)) {
-            let a = 0;
-            while (IDs.find(val => val === changeId + a)) {
-                a++;
-            }
-            changeId += a;
-        }
-        localStorage.setItem(changeId + 'name', modalName.value);
-        localStorage.setItem(changeId + 'msg', modalMessage.value);
-        localStorage.setItem(changeId + 'pw', modalPassword.value);
-        const today = new Date().toLocaleString();
-        localStorage.setItem(changeId + 'time', today);
-        editIDs.push(changeId);
-        alert("수정이 완료되었습니다.");
-    }
-    localStorage.setItem('IDs', editIDs);
-    modal.style.display = 'none';
-    location.reload(true);
+    console.log(changeId);
+    localStorage.setItem(changeId + "name", modalName.value);
+    localStorage.setItem(changeId + "msg", modalMessage.value);
+    localStorage.setItem(changeId + "pw", modalPassword.value);
+    const today = new Date().toLocaleString();
+    localStorage.setItem(changeId + "time", today);
+    editIDs.push(changeId);
+    alert("수정이 완료되었습니다.");
+  }
+  localStorage.setItem("IDs", editIDs);
+  modal.style.display = "none";
+  location.reload(true);
 }
 
-function makeEvent(data) { // 수정 및 삭제
-    data.addEventListener('click', function (element) {
-        const ID = element.target.id;
-        modalName.value = localStorage.getItem(ID + 'name');
-        modalMessage.value = localStorage.getItem(ID + 'msg');
-        modal.style.display = 'block';
-        function deleteEventHandler() {
-            editOrDelete('delete', ID);
-        }
-        function editEventHandler() {
-            editOrDelete('edit', ID);
-        }
-        function cancelEventHandler() {
-            modal.style.display = 'none';
-            deleteButton.removeEventListener('click', deleteEventHandler);
-            editButton.removeEventListener('click', editEventHandler);
-        }
-        deleteButton.addEventListener('click', deleteEventHandler);
-        editButton.addEventListener('click', editEventHandler);
-        cancelButton.addEventListener('click', cancelEventHandler);
-    });
+function makeEvent(data) {
+  // 수정 및 삭제
+  data.addEventListener("click", function (element) {
+    const ID = element.target.id;
+    modalName.value = localStorage.getItem(ID + "name");
+    modalMessage.value = localStorage.getItem(ID + "msg");
+    modal.style.display = "block";
+    function deleteEventHandler() {
+      editOrDelete("delete", ID);
+    }
+    function editEventHandler() {
+      editOrDelete("edit", ID);
+    }
+    function cancelEventHandler() {
+      modal.style.display = "none";
+      deleteButton.removeEventListener("click", deleteEventHandler);
+      editButton.removeEventListener("click", editEventHandler);
+    }
+    deleteButton.addEventListener("click", deleteEventHandler);
+    editButton.addEventListener("click", editEventHandler);
+    cancelButton.addEventListener("click", cancelEventHandler);
+  });
 }
 
-function addReview(data) { // 리뷰 추가
-    let { ID, name, msg, time } = data;
-    let toChange = document.createElement('div');
-    toChange.innerHTML = `
+function addReview(data) {
+  // 리뷰 추가
+  let { ID, name, msg, time } = data;
+  let toChange = document.createElement("div");
+  toChange.innerHTML = `
     <div class="comment row">
         <div class="col">
             <div class="author fw-bold">${name}</div>
@@ -92,70 +100,73 @@ function addReview(data) { // 리뷰 추가
             <button class="btn btn-danger" id="${ID}" style="margin-right: -16px; margin-top: 9px;">수정 및 삭제</button>
         </div>
     </div>`;
-    reviewSpace.appendChild(toChange);
-    buttonEditDelete = document.querySelectorAll(".btn.btn-danger");
-    makeEvent(buttonEditDelete[buttonEditDelete.length - 2]);
+  reviewSpace.appendChild(toChange);
+  buttonEditDelete = document.querySelectorAll(".btn.btn-danger");
+  makeEvent(buttonEditDelete[buttonEditDelete.length - 2]);
 }
 
-makeButton.addEventListener('click', function () { // 입력 누를 시
-    const name = getName.value;
-    const pw = getPassword.value;
-    const msg = getMessage.value;
-    const today = new Date().toLocaleString();
-    let ID = name;
-    if (localStorage.length !== 0) {
-        let IDs = localStorage.getItem("IDs").split(",");
-        if (IDs.find(val => val === ID)) {
-            let a = 0;
-            while (IDs.find(val => val === ID + a)) {
-                a++;
-            }
-            ID += a;
-        }
+makeButton.addEventListener("click", function () {
+  // 입력 누를 시
+  const name = getName.value;
+  const pw = getPassword.value;
+  const msg = getMessage.value;
+  const today = new Date().toLocaleString();
+  let ID = name;
+  console.log(localStorage.length);
+  if (localStorage.length !== 0) {
+    let IDs = localStorage.getItem("IDs").split(",");
+    if (IDs.find((val) => val === ID)) {
+      let a = 0;
+      while (IDs.find((val) => val === ID + a)) {
+        a++;
+      }
+      ID += a;
     }
-    const data = {
-        ID: ID,
-        name: name,
-        msg: msg,
-        time: today
-    }
-    addReview(data); // 코드 추가
+  }
+  const data = {
+    ID: ID,
+    name: name,
+    msg: msg,
+    time: today
+  };
+  addReview(data); // 코드 추가
 
-    let editIDs = localStorage.getItem('IDs'); // editIDs에 ID들 불러오기
-    if (editIDs === null) editIDs = [];
-    else editIDs = [editIDs];
-    editIDs.push(ID); // editIDs에 ID 넣기
-    localStorage.setItem('IDs', editIDs); // ID 넣은 editIDs 저장
-    localStorage.setItem(ID + "name", name); // 나머지 정보 저장
-    localStorage.setItem(ID + "pw", pw);
-    localStorage.setItem(ID + "msg", msg);
-    localStorage.setItem(ID + "time", today);
+  let editIDs = localStorage.getItem("IDs"); // editIDs에 ID들 불러오기
+  if (editIDs === null) editIDs = [];
+  else editIDs = [editIDs];
+  editIDs.push(ID); // editIDs에 ID 넣기
+  localStorage.setItem("IDs", editIDs); // ID 넣은 editIDs 저장
+  localStorage.setItem(ID + "name", name); // 나머지 정보 저장
+  localStorage.setItem(ID + "pw", pw);
+  localStorage.setItem(ID + "msg", msg);
+  localStorage.setItem(ID + "time", today);
 
-    getName.value=null;
-    getPassword.value=null;
-    getMessage.value=null;
+  getName.value = null;
+  getPassword.value = null;
+  getMessage.value = null;
 });
 
-function showReview() { // 리뷰 불러오기
-    if (localStorage.length == 0 || localStorage.getItem("IDs") == '') return;
-    let IDs = localStorage.getItem('IDs').split(",");  // IDs 가져와서
-    for (let i = 0; i < IDs.length; i++) { // ID에 맞는 것들 get 해서 출력
-        const ID = IDs[i];
-        const name = localStorage.getItem(ID + 'name');
-        const pw = localStorage.getItem(ID + 'pw');
-        const msg = localStorage.getItem(ID + 'msg');
-        const time = localStorage.getItem(ID + 'time');
-        const data = {
-            ID: ID,
-            name: name,
-            msg: msg,
-            time: time
-        }
-        addReview(data);
-    }
+function showReview() {
+  // 리뷰 불러오기
+  if (localStorage.length == 0 || localStorage.getItem("IDs") == "") return;
+  let IDs = localStorage.getItem("IDs").split(","); // IDs 가져와서
+  for (let i = 0; i < IDs.length; i++) {
+    // ID에 맞는 것들 get 해서 출력
+    const ID = IDs[i];
+    const name = localStorage.getItem(ID + "name");
+    const pw = localStorage.getItem(ID + "pw");
+    const msg = localStorage.getItem(ID + "msg");
+    const time = localStorage.getItem(ID + "time");
+    const data = {
+      ID: ID,
+      name: name,
+      msg: msg,
+      time: time
+    };
+    addReview(data);
+  }
 }
 
 showReview();
-
 
 // 수정 및 삭제 페이지에서 처음에 pw빼고 다 입력 해놓고 pw랑 수정 누르면 수정, pw넣고 삭제 누르면 삭제
