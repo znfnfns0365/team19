@@ -3,20 +3,15 @@ const review_msg = document.querySelector(".review_error");
 const review_name = document.querySelector(".review_name");
 const review_pwd = document.querySelector(".review_pwd");
 const review_btn = document.querySelector(".review_btn");
-
-
 // 아이디: 글자 수 제한 ( 2글자~12글자)
 function idLength(value) {
     return value.length >= 2 && value.length <= 12
 }
-
 // 아이디: 영어 or 숫자만 가능
 function onlyNumberAndEnglish(str) {
     return /^[A-Za-z0-9][A-Za-z0-9]*$/.test(str);
 }
-
 // 비밀번호 : 8글자 이상, 영문, 숫자, 특수문자 사용
-
 function strongPassword(str) {
     return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&~])[A-Za-z\d@$!%*#?&~]{8,}$/.test(str);
 }
