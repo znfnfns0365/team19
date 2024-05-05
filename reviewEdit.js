@@ -11,9 +11,7 @@ const modalPassword = document.querySelector("#modalPassword");
 const modalMessage = document.querySelector("#modalMessage");
 const deleteButton = document.getElementById("deleteButton");
 const editButton = document.getElementById("editButton");
-
 let buttonEditDelete = document.querySelector(".btn.btn-danger");
-// const  = document.querySelector("");
 
 function editOrDelete(kind, ID) {
   // 수정 혹은 삭제
@@ -105,7 +103,7 @@ function addReview(data) {
   makeEvent(buttonEditDelete[buttonEditDelete.length - 2]);
 }
 
-makeButton.addEventListener("click", function () {
+export function inputClicked() {
   // 입력 누를 시
   const name = getName.value;
   const pw = getPassword.value;
@@ -144,7 +142,7 @@ makeButton.addEventListener("click", function () {
   getName.value = null;
   getPassword.value = null;
   getMessage.value = null;
-});
+}
 
 function showReview() {
   // 리뷰 불러오기
