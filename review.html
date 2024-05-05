@@ -13,14 +13,17 @@
     <!-- 리뷰 작성 -->
     <div class="mb-3">
         <div class="d-flex align-items-center">
-            <label for="exampleFormControlInput1" class="form-label me-3">Name : </label>
-            <input type="name" class="form-control me-3" id="exampleFormControlInput1" placeholder="name@example.com">
+            <label for="exampleFormControlInput1" class="form-label me-3  ">Name : </label>
+            <input type="name" class="form-control me-3 review_name" id="exampleFormControlInput1" placeholder="name">
             <label for="exampleFormControlInput2" class="form-label me-3">Password : </label>
-            <input type="password" class="form-control me-3" id="exampleFormControlInput2" placeholder="●●●●">
+            <input type="password" class="form-control me-3 review_pwd" id="exampleFormControlInput2"
+                placeholder="●●●●">
         </div>
         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
         <textarea class="form-control" id="msg" rows="3"></textarea>
-        <button type="button" class="btn btn-primary mt-3" id="makeButton" style="float: right; margin-right: 10px;">입력</button>
+        <div class="review_error" style="color:red;"></div>
+        <button id="makeButton" type="button" class="btn btn-primary mt-3 review_btn"
+            style="float: right; margin-right: 10px;">입력</button>
     </div>
 
     <!--작성된 리뷰-->
@@ -52,7 +55,7 @@
     </div>
 
     <script type="module" src="reviewEdit.js"></script>
-
+    <script type="module" src="validcheck.js"></script>
 </body>
 
 </html>
