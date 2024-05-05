@@ -7,7 +7,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/review.css">
-
 </head>
 
 <body>
@@ -23,29 +22,14 @@
         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
         <textarea class="form-control" id="msg" rows="3"></textarea>
         <div class="review_error" style="color:red;"></div>
-        <button id="review_btn" type="button" class="btn btn-primary mt-3 review_btn"
+        <button id="makeButton" type="button" class="btn btn-primary mt-3 review_btn"
             style="float: right; margin-right: 10px;">입력</button>
     </div>
 
     <!--작성된 리뷰-->
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="comment row">
-                    <div class="col">
-                        <div class="author fw-bold">name</div>
-                        <!-- <div class="col-auto">
-                            <div class="time">24-05-03 11:45</div>
-                        </div> -->
-                        <div class="content mt-2">
-                            내용
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-danger" style="margin-right: -16px; margin-top: 9px;" id="editButton">수정
-                            및 삭제</button>
-                    </div>
-                </div>
+            <div class="col-md-8 offset-md-2" id="reviewSpace">
 
             </div>
         </div>
@@ -54,16 +38,16 @@
     <!-- 모달 -->
     <div class="modal">
         <label for="exampleFormControlInput1" class="form-label">Name : </label>
-        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></br>
+        <input type="name" class="form-control" id="modalName" placeholder="name@example.com"></br>
         <label for="exampleFormControlInput1" class="form-label">Password : </label>
-        <input type="password" class="form-control review_pwd" id="exampleFormControlInput1" placeholder="●●●●"></br>
+        <input type="password" class="form-control" id="modalPassword" placeholder="●●●●"></br>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Message</label></br>
-            <textarea class="form-control review_msg" id="msg" rows="3"></textarea></br>
+            <textarea class="form-control" id="modalMessage" rows="3"></textarea></br>
             <div>
-                <button class="btn btn-danger">삭제</button>
+                <button id="deleteButton" class="btn btn-danger">삭제</button>
                 <div style="float: right;">
-                    <button type="button" class="btn btn-primary" style="margin-right: 10px">수정</button>
+                    <button type="button" class="btn btn-primary" id="editButton" style="margin-right: 10px">수정</button>
                     <button type="button" class="btn btn-secondary" id="cancelButton">취소</button>
                 </div>
             </div>
