@@ -67,7 +67,6 @@ review_btn.addEventListener("click", function () {
   }
 });
 
-
 // ///////////////////////////////////////////////////////////
 // 수정 리뷰 아이디 이벤트
 review_modify_name.onkeyup = function () {
@@ -104,14 +103,15 @@ review_modify_pw.onkeyup = function () {
   return return_value;
 };
 // 수정 입력버튼을 누른다면
-review_modify_btn.addEventListener("click", function () {
+export function editValidation() {
   // 아이디의 값을 제대로 입력하지 못했을때 오류메시지
   if (!review_modify_name.onkeyup()) {
     alert("아이디 재확인 요망");
+    return 0;
   } else if (!review_modify_pw.onkeyup()) {
     alert("비밀번호 재확인 요망");
+    return 0;
   } else {
-    alert("정상적으로 저장되었습니다.");
-    inputClicked();
+    return 1;
   }
-});
+}

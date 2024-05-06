@@ -1,3 +1,4 @@
+import { editValidation } from "./validcheck.js";
 const modelView = document.querySelector(".modal");
 const modal = document.querySelector(".modal");
 const cancelButton = document.querySelector("#cancelButton");
@@ -15,7 +16,6 @@ let buttonEditDelete = document.querySelector(".btn.btn-danger");
 
 function editOrDelete(kind, ID) {
   // 수정 혹은 삭제
-  console.log(ID);
   if (modalPassword.value !== localStorage.getItem(ID + "pw")) {
     // 비밀번호 검사
     alert("비밀번호가 일치하지 않습니다!");
@@ -43,7 +43,6 @@ function editOrDelete(kind, ID) {
       }
       changeId += a;
     }
-    console.log(changeId);
     localStorage.setItem(changeId + "name", modalName.value);
     localStorage.setItem(changeId + "msg", modalMessage.value);
     localStorage.setItem(changeId + "pw", modalPassword.value);
@@ -68,7 +67,9 @@ function makeEvent(data) {
       editOrDelete("delete", ID);
     }
     function editEventHandler() {
-      editOrDelete("edit", ID);
+      if (editValidation()) {
+        editOrDelete("edit", ID);
+      }
     }
     function cancelEventHandler() {
       modal.style.display = "none";
@@ -110,7 +111,6 @@ export function inputClicked() {
   const msg = getMessage.value;
   const today = new Date().toLocaleString();
   let ID = name;
-  console.log(localStorage.length);
   if (localStorage.length !== 0) {
     let IDs = localStorage.getItem("IDs").split(",");
     if (IDs.find((val) => val === ID)) {
@@ -150,6 +150,7 @@ function showReview() {
   let IDs = localStorage.getItem("IDs").split(","); // IDs 가져와서
   for (let i = 0; i < IDs.length; i++) {
     // ID에 맞는 것들 get 해서 출력
+    if (IDs[i] === "") continue;
     const ID = IDs[i];
     const name = localStorage.getItem(ID + "name");
     const pw = localStorage.getItem(ID + "pw");
@@ -166,3 +167,5 @@ function showReview() {
 }
 
 showReview();
+
+// IDmovie만들어서 영화 아이디도 저장하고 addReview에서 출력전에 확인하고 출력/
