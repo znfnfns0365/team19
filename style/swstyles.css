@@ -29,8 +29,9 @@ header {
 
 img {
   width: 30%;
-  height: 1000%;
+  height: 900%;
   position: absolute;
   left : 45%;
+  top : 150px;
 }
 

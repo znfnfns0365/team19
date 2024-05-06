@@ -18,6 +18,7 @@ const options = {
 const fetchMovieData = async () => {
   const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options);
   const dataResponsed = await data.json();
+  console.log(dataResponsed);
   return dataResponsed.results;
 };
 
@@ -49,7 +50,7 @@ const makeMovieCard = async () => {
 
 const handleSearch = () => {
   const movieCards = document.querySelectorAll('.movieCard');
-
+  console.log(movieCards);
   movieCards.forEach((card) => {
     const cardId = card.id; // id를 가져오rp
     const exportId = localStorage.getItem('exportId');
