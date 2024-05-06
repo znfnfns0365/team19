@@ -24,7 +24,7 @@ function editOrDelete(kind, ID) {
   let editIDs = localStorage.getItem("IDs").split(",");
   editIDs = editIDs.filter(function (val) {
     // IDs에서 ID삭제
-    return val != ID;
+    return val != ID && val != "";
   });
   localStorage.removeItem(ID + "name");
   localStorage.removeItem(ID + "msg");
