@@ -37,18 +37,20 @@
 
     <!-- 모달 -->
     <div class="modal">
-        <label for="exampleFormControlInput1" class="form-label">Name : </label>
-        <input type="name" class="form-control" id="modalName" placeholder="name@example.com"></br>
+        <label for="exampleFormControlInput1" class="form-label ">Name : </label>
+        <input type="name" class="form-control review_modify_name" id="modalName" placeholder="name@example.com"></br>
         <label for="exampleFormControlInput1" class="form-label">Password : </label>
-        <input type="password" class="form-control" id="modalPassword" placeholder="●●●●"></br>
+        <input type="password" class="form-control review_modify_pw" id="modalPassword" placeholder="●●●●"></br>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Message</label></br>
             <textarea class="form-control" id="modalMessage" rows="3"></textarea></br>
             <div>
                 <button id="deleteButton" class="btn btn-danger">삭제</button>
                 <div style="float: right;">
-                    <button type="button" class="btn btn-primary" id="editButton" style="margin-right: 10px">수정</button>
+                    <button type="button" class="btn btn-primary review_modify_btn" id="editButton"
+                        style="margin-right: 10px">수정</button>
                     <button type="button" class="btn btn-secondary" id="cancelButton">취소</button>
+                    <div class="review_modify_error" style="color:red;"></div>
                 </div>
             </div>
         </div>
