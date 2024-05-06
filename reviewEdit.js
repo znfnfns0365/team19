@@ -13,50 +13,51 @@ const deleteButton = document.getElementById("deleteButton");
 const editButton = document.getElementById("editButton");
 let buttonEditDelete = document.querySelector(".btn.btn-danger");
 
-function editOrDelete(kind, ID) {
-  // 수정 혹은 삭제
-  console.log(ID);
-  if (modalPassword.value !== localStorage.getItem(ID + "pw")) {
-    // 비밀번호 검사
-    alert("비밀번호가 일치하지 않습니다!");
-    return;
-  }
-  let editIDs = localStorage.getItem("IDs").split(",");
-  editIDs = editIDs.filter(function (val) {
-    // IDs에서 ID삭제
-    return val != ID;
-  });
-  localStorage.removeItem(ID + "name");
-  localStorage.removeItem(ID + "msg");
-  localStorage.removeItem(ID + "pw");
-  localStorage.removeItem(ID + "time");
-  if (kind === "delete") {
-    alert("삭제가 완료되었습니다.");
-  } else {
-    // 수정
-    let IDs = editIDs,
-      changeId = modalName.value;
-    if (IDs.find((val) => val === changeId)) {
-      let a = 0;
-      while (IDs.find((val) => val === changeId + a)) {
-        a++;
-      }
-      changeId += a;
+const editOrDelete = function (kind, ID) {
+  return new Promise(function func(resolve) {
+    // 수정 혹은 삭제
+    if (modalPassword.value !== localStorage.getItem(ID + "pw")) {
+      // 비밀번호 검사
+      alert("비밀번호가 일치하지 않습니다!");
+      return;
     }
-    console.log(changeId);
-    localStorage.setItem(changeId + "name", modalName.value);
-    localStorage.setItem(changeId + "msg", modalMessage.value);
-    localStorage.setItem(changeId + "pw", modalPassword.value);
-    const today = new Date().toLocaleString();
-    localStorage.setItem(changeId + "time", today);
-    editIDs.push(changeId);
-    alert("수정이 완료되었습니다.");
-  }
-  localStorage.setItem("IDs", editIDs);
-  modal.style.display = "none";
-  location.reload(true);
-}
-
+    let editIDs = localStorage.getItem("IDs").split(",");
+    editIDs = editIDs.filter(function (val) {
+      // IDs에서 ID삭제
+      return val != ID;
+    });
+    localStorage.removeItem(ID + "name");
+    localStorage.removeItem(ID + "msg");
+    localStorage.removeItem(ID + "pw");
+    localStorage.removeItem(ID + "time");
+    if (kind === "delete") {
+      alert("삭제가 완료되었습니다.");
+    } else {
+      // 수정
+      let IDs = editIDs,
+        changeId = modalName.value;
+      if (IDs.find((val) => val === changeId)) {
+        let a = 0;
+        while (IDs.find((val) => val === changeId + a)) {
+          a++;
+        }
+        changeId += a;
+      }
+      localStorage.setItem(changeId + "name", modalName.value);
+      localStorage.setItem(changeId + "msg", modalMessage.value);
+      localStorage.setItem(changeId + "pw", modalPassword.value);
+      const today = new Date().toLocaleString();
+      localStorage.setItem(changeId + "time", today);
+      editIDs.push(changeId);
+      console.log(changeId);
+      alert("수정이 완료되었습니다.");
+    }
+    localStorage.setItem("IDs", editIDs);
+    modal.style.display = "none";
+    location.reload(true);
+    resolve();
+  });
+};
 function makeEvent(data) {
   // 수정 및 삭제
   data.addEventListener("click", function (element) {
@@ -64,11 +65,11 @@ function makeEvent(data) {
     modalName.value = localStorage.getItem(ID + "name");
     modalMessage.value = localStorage.getItem(ID + "msg");
     modal.style.display = "block";
-    function deleteEventHandler() {
-      editOrDelete("delete", ID);
+    async function deleteEventHandler() {
+      await editOrDelete("delete", ID);
     }
-    function editEventHandler() {
-      editOrDelete("edit", ID);
+    async function editEventHandler() {
+      await editOrDelete("edit", ID);
     }
     function cancelEventHandler() {
       modal.style.display = "none";
@@ -110,7 +111,6 @@ export function inputClicked() {
   const msg = getMessage.value;
   const today = new Date().toLocaleString();
   let ID = name;
-  console.log(localStorage.length);
   if (localStorage.length !== 0) {
     let IDs = localStorage.getItem("IDs").split(",");
     if (IDs.find((val) => val === ID)) {
