@@ -2,48 +2,40 @@ body {
     font-family: Arial, sans-serif;
     margin: auto;
     background-color: wheat;
-}
-#movie_image {
-    background-position: center;
-    background-size: cover;
-    background: rgb(185, 185, 185);
-    text-align: center;
-    margin: auto;
-    width: 90%;
-    height: 100%;
-}    
-
-        /* 이미지 크기 조절 */
-#test {
-    width: 21%;
-    height: 100%; 
-}
-
-#title {
-    background: rgb(204, 95, 68);
-    padding: 1%;
-    margin: auto;
-    text-align: center;
-    font-weight: bold;
-}
-
-.detail {
-    background-color: rgb(255, 214, 138);
-    margin: 5%;
-    padding: 2%;
-    text-align: left;
-    font-weight: bold;
-    margin-top: 0%;
-}
-
-#back {
-    padding: 3.1%;
+  }
+  
+  header {
     background-image: url("../image/curtaincall.jpg");
-    background-size: cover;
     background-position: center;
-}
-
-#review {
+    background-size: cover;
+    color: black;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  .movieCard{
+    font-size: 36px;
+  
+    position: relative;
+    left: 10%;
+  }
+  
+  .cardText{
+    position: absolute;
+    text-align: left;
+    width: 36%;
+  }
+  
+  img {
+    width: 30%;
+    height: 900%;
+    position: absolute;
+    left : 45%;
+    top : 150px;
+  }
+  
+  #review {
     display: flex;
     flex-direction: column;
     align-items: center;
