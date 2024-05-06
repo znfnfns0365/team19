@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    background-color: wheat;
+}
+#movie_image {
+    background-position: center;
+    background-size: cover;
+    background: rgb(185, 185, 185);
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+}    
+
+        /* 이미지 크기 조절 */
+#test {
+    width: 21%;
+    height: 100%; 
+}
+
+#title {
+    background: rgb(204, 95, 68);
+    padding: 1%;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.detail {
+    background-color: rgb(255, 214, 138);
+    margin: 5%;
+    padding: 2%;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 0%;
+}
+
+#back {
+    padding: 3.1%;
+    background-image: url("../image/curtaincall.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+input {
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+#msg {
+    width: 580px;
+}
+
+.comment {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.container {
+    max-width: 885px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    padding: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    z-index: 9999;
+    max-width: 620px;
+    height: auto;
+}
