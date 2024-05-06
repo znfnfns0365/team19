@@ -47,9 +47,12 @@ function cardClicked(event) {
   if (event.target.matches(".card")) {
     alert(`영화 id: ${event.target.id}`);
   } else {
+    localStorage.setItem(`exportId`, event.target.parentNode.id);
+    window.location.href = "http://127.0.0.1:5501/indexsw.html";
     alert(`영화 id: ${event.target.parentNode.id}`);
   }
 }
+
 
 const makeEvent = (data) => {
   searchButton.addEventListener("click", () => {
@@ -73,7 +76,6 @@ function getMovieCode(movie) {
           <h3 class="card-title">${title}</h3>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >
           <button style="color:black;" class="More_btn">상세정보</button>
-          
         </div>`;
   return movieCode;
 }
