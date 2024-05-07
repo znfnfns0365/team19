@@ -1,12 +1,10 @@
 import { inputClicked } from "./reviewEdit.js";
 const review_error = document.querySelector(".review_error");
-const review_msg = document.querySelector(".review_error");
 const review_name = document.querySelector(".review_name");
 const review_pwd = document.querySelector(".review_pwd");
 const review_btn = document.querySelector(".review_btn");
 const review_modify_name = document.querySelector(".review_modify_name");
 const review_modify_pw = document.querySelector(".review_modify_pw");
-const review_modify_btn = document.querySelector(".review_modify_btn");
 const review_modify_error = document.querySelector(".review_modify_error");
 // 아이디: 글자 수 제한 ( 2글자~12글자)
 function idLength(value) {
