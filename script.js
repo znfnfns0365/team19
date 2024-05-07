@@ -69,7 +69,7 @@ const makeEvent = (data) => {
 
 function getMovieCode(movie) {
   const { id, poster_path, title, overview, vote_average } = movie;
-  const movieCode = `<div id="${id}" class="card col-3 card_custom">
+  const movieCode = `<div id="${id}" class="card col-md-4 col-sm-12 card_custom">
           <h3 class="card-title">${title}</h3>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >
           
