@@ -53,7 +53,6 @@ function cardClicked(event) {
   }
 }
 
-
 const makeEvent = (data) => {
   searchButton.addEventListener("click", () => {
     search(data);
@@ -91,5 +90,3 @@ window.onload = function () {
 };
 
 fetchMovie();
-
-
