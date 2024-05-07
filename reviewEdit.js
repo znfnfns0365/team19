@@ -130,7 +130,7 @@ export function inputClicked() {
   addReview(data); // 코드 추가
 
   let editIDs = localStorage.getItem("IDs"); // editIDs에 ID들 불러오기
-  if (editIDs === null) editIDs = [];
+  if (editIDs === null || editIDs === "") editIDs = [];
   else editIDs = [editIDs];
   editIDs.push(ID); // editIDs에 ID 넣기
   localStorage.setItem("IDs", editIDs); // ID 넣은 editIDs 저장
