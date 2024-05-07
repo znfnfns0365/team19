@@ -23,7 +23,8 @@ const fetchMovieData = async () => {
 
 const makeMovieCard = async () => {
   const movies = await fetchMovieData();
-  const cardList = document.querySelector(".cardList");
+  const cardList = document.querySelector('.cardList');
+
   if (cardList) {
     cardList.innerHTML = movies
       .map(
