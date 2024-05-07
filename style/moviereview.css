@@ -91,3 +91,7 @@ input {
   max-width: 620px;
   height: auto;
 }
+
+.back {
+  margin: 2%;
+}
