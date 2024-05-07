@@ -17,7 +17,7 @@ body {
   .movieCard{
     font-size: 36px;
     position: relative;
-    left: 10%;
+    left: 15%;
     margin-bottom: 500px;
   }
   
@@ -28,8 +28,8 @@ body {
   }
   
   img {
-    width: 30%;
-    height: 900%;
+    width: 370px;
+    height: 420px;
     position: absolute;
     left : 45%;
     top : 50px;
