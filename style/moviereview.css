@@ -13,8 +13,8 @@ header {
     text-align: center;
 }
 
-.movieCard {
-    width: 1500px;
+.movieCard {/*좌우 스크롤 원흉*/
+    width: 1500px;/*해결방안*/
     font-size: 36px;
     position: relative;
     left: 19%;
@@ -32,7 +32,7 @@ header {
 }
 
 img {
-    max-width: 40%; /* 수정 */
+    max-width: 40%;
     height: auto;
     display: block;
     margin-left: 700px;
@@ -51,7 +51,7 @@ img {
     cursor: pointer;
     margin: 0 auto;
     z-index: 999;
-    height: 90vh;
+    height: 90vh;/*리뷰 하단 공백 추가*/
 }
 
 input {
@@ -109,7 +109,7 @@ input {
     height: auto;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {/*창모드*/
     .movieCard{
         width: 510px;
     }
