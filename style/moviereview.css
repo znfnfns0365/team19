@@ -1,52 +1,52 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: auto;
-  background-color: wheat;
-}
-
-header {
-  background-image: url("../image/curtaincall.jpg");
-  background-position: center;
-  background-size: cover;
-  color: black;
-  padding: 20px;
-  text-align: center;
-}
-
-
-.movieCard {
-  font-size: 36px;
-  position: relative;
-  left: 10%;
-  margin-bottom: 500px;
-}
-
-.cardText {
-  position: absolute;
-  text-align: left;
-  width: 36%;
-}
-
-img {
-  width: 30%;
-  height: 900%;
-  position: absolute;
-  left: 45%;
-  top: 50px;
-}
-
-#review {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  cursor: pointer;
-  margin: 0 auto;
-  z-index: 999;
+    font-family: Arial, sans-serif;
+    margin: auto;
+    background-color: wheat;
+  }
+  
+  header {
+    background-image: url("../image/curtaincall.jpg");
+    background-position: center;
+    background-size: cover;
+    color: black;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  .movieCard{
+    font-size: 36px;
+    position: relative;
+    left: 15%;
+    margin-bottom: 500px;
+  }
+  
+  .cardText{
+    position: absolute;
+    text-align: left;
+    width: 36%;
+  }
+  
+  img {
+    width: 370px;
+    height: 420px;
+    position: absolute;
+    left : 45%;
+    top : 50px;
+  }
+  
+  #review {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+    z-index: 999;
 }
 
 input {
@@ -90,4 +90,8 @@ input {
   z-index: 9999;
   max-width: 620px;
   height: auto;
+}
+
+.back {
+  margin: 2%;
 }

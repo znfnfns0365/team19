@@ -42,8 +42,9 @@ const search = (data) => {
 
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
-
-  if (event.target.matches(".card")) {
+  if (event.target.matches(".row")) {
+    stop
+  } else if (event.target.matches(".card")) {
     localStorage.setItem(`exportId`, event.target.id);
     alert(`영화 id: ${event.target.id}`);
   } else {
