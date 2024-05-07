@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+
   margin: auto;
   background-color: wheat;
 }
@@ -42,7 +43,6 @@ img {
   padding-top: 20px;
   margin-top: 700px;
   cursor: pointer;
-
 }
 
 input {
