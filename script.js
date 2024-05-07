@@ -48,7 +48,7 @@ function cardClicked(event) {
     alert(`영화 id: ${event.target.id}`);
   } else {
     localStorage.setItem(`exportId`, event.target.parentNode.id);
-    window.location.href = "http://127.0.0.1:5501/indexsw.html";
+    window.location.href = "http://127.0.0.1:5501/moviereview.html";
     alert(`영화 id: ${event.target.parentNode.id}`);
   }
 }
