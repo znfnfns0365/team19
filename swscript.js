@@ -1,5 +1,4 @@
-
-var button = document.querySelector('.href');
+var button = document.querySelector(".href");
 
 button.addEventListener("click", function () {
   window.location.href = "http://127.0.0.1:5501/index.html";
@@ -9,10 +8,10 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    'Content-Type': 'application/json;charset=utf-8',
+    "Content-Type": "application/json;charset=utf-8",
     Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NTI3ZTRmNTE5NGE5Y2I4MjM1ODQwYzUzZTYwN2QwYyIsInN1YiI6IjY2MjljYmQ4OGQ3N2M0MDA5YjJkN2NhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z4rAgqLmw9SuSgTo__-CeayGcrzowkMVcMPPhswcNAo',
-  },
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NTI3ZTRmNTE5NGE5Y2I4MjM1ODQwYzUzZTYwN2QwYyIsInN1YiI6IjY2MjljYmQ4OGQ3N2M0MDA5YjJkN2NhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z4rAgqLmw9SuSgTo__-CeayGcrzowkMVcMPPhswcNAo"
+  }
 };
 
 const fetchMovieData = async () => {
@@ -24,10 +23,11 @@ const fetchMovieData = async () => {
 
 const makeMovieCard = async () => {
   const movies = await fetchMovieData();
-  const cardList = document.querySelector('.cardList');
+  const cardList = document.querySelector(".cardList");
   if (cardList) {
-    cardList.innerHTML = movies.map(
-      (movie) => `
+    cardList.innerHTML = movies
+      .map(
+        (movie) => `
       <div class="movieCard" id="${movie.id}">
       <h1>${movie.title}</h1>
         <div class="movie_image">
@@ -40,7 +40,7 @@ const makeMovieCard = async () => {
           </div>
         </div>
       </div>`
-    )
+      )
       .join("");
     handleSearch();
   } else {
@@ -49,11 +49,11 @@ const makeMovieCard = async () => {
 };
 
 const handleSearch = () => {
-  const movieCards = document.querySelectorAll('.movieCard');
+  const movieCards = document.querySelectorAll(".movieCard");
   console.log(movieCards);
   movieCards.forEach((card) => {
     const cardId = card.id; // id를 가져오rp
-    const exportId = localStorage.getItem('exportId');
+    const exportId = localStorage.getItem("exportId");
 
     if (cardId === exportId) {
       card.style.display = "block"; // display를 보이게 하기
