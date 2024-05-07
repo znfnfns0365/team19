@@ -78,9 +78,32 @@ function getMovieCode(movie) {
 }
 
 function displayMovies(data) {
-  data.results.forEach((movie) => {
+  let sortedData = (sortStd) => {
+    if (sortStd === "제목순") {
+      return data.results.sort((a, b) => {
+        if (a.title > b.title) return 1;
+        else if (a.title < b.title) return -1;
+        return 0;
+      });
+    } else if (sortStd === "평점순") {
+      return data.results.sort((a, b) => {
+        if (a.vote_average > b.vote_average) return 1;
+        else if (a.vote_average < b.vote_average) return -1;
+        return 0;
+      });
+    } else {
+      // 개봉일순
+      return data.results.sort((a, b) => {
+        if (a.release_date > b.release_date) return 1;
+        else if (a.release_date < b.release_date) return -1;
+        return 0;
+      });
+    }
+  };
+  data = sortedData("개봉일순");
+  for (let movie of data) {
     editId.innerHTML += getMovieCode(movie);
-  });
+  }
 }
 
 window.onload = function () {
