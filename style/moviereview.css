@@ -13,8 +13,10 @@ body {
     text-align: center;
   }
   
-  
+
   .movieCard{
+    background-color: gray;
+    width: 1500px;
     font-size: 36px;
     position: relative;
     left: 10%;
@@ -25,6 +27,7 @@ body {
     position: absolute;
     text-align: left;
     width: 36%;
+    margin-top: ;
   }
   
   img {
