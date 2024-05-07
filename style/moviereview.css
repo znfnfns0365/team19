@@ -50,44 +50,44 @@ body {
 }
 
 input {
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-    max-width: 200px;
-    margin-right: 10px;
-    text-align: left;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 200px;
+  margin-right: 10px;
+  text-align: left;
 }
 
 #msg {
-    width: 580px;
+  width: 580px;
 }
 
 .comment {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-top: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .author {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .container {
-    max-width: 885px;
+  max-width: 885px;
 }
 
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: black;
-    padding: 20px;
-    padding-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    z-index: 9999;
-    max-width: 620px;
-    height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  padding: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  max-width: 620px;
+  height: auto;
 }
