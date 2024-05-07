@@ -4,8 +4,6 @@ const editId = document.getElementById("cardSpace");
 const cardsClick = document.querySelector(".cards");
 const titleClick = document.getElementById("title");
 
-// getElementById와 querySelector 차이 (ID를 불러올 때)
-
 const options = {
   method: "GET",
   headers: {
@@ -45,10 +43,11 @@ function cardClicked(event) {
   if (event.target === event.currentTarget) return;
 
   if (event.target.matches(".card")) {
+    localStorage.setItem(`exportId`, event.target.id);
     alert(`영화 id: ${event.target.id}`);
   } else {
     localStorage.setItem(`exportId`, event.target.parentNode.id);
-    window.location.href = "http://127.0.0.1:5501/indexsw.html";
+    window.location.href = "http://127.0.0.1:5501/moviereview.html";
     alert(`영화 id: ${event.target.parentNode.id}`);
   }
 }
@@ -69,8 +68,7 @@ const makeEvent = (data) => {
 };
 
 function getMovieCode(movie) {
-  const { id, poster_path, title, overview, vote_average } = movie; // alert에서 밖에 "없이 띄어쓰기 하면 오류나는 이유..?
-  // const movieCode = `<div onclick="alert('영화 id: ' + '${id}')" id="${id}" class="card">
+  const { id, poster_path, title, overview, vote_average } = movie;
   const movieCode = `<div id="${id}" class="card col-3 card_custom">
           <h3 class="card-title">${title}</h3>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >

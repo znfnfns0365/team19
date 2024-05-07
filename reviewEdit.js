@@ -29,7 +29,7 @@ function editOrDelete(kind, ID) {
   localStorage.removeItem(ID + "name");
   localStorage.removeItem(ID + "msg");
   localStorage.removeItem(ID + "pw");
-  // localStorage.removeItem(ID + "movieID");
+  localStorage.removeItem(ID + "movieID");
   localStorage.removeItem(ID + "time");
   if (kind === "delete") {
     alert("삭제가 완료되었습니다.");
@@ -47,7 +47,7 @@ function editOrDelete(kind, ID) {
     localStorage.setItem(changeId + "name", modalName.value);
     localStorage.setItem(changeId + "msg", modalMessage.value);
     localStorage.setItem(changeId + "pw", modalPassword.value);
-    // localStorage.setItem(changeId + "movieID", );
+    localStorage.setItem(changeId + "movieID", localStorage.getItem("exportId"));
     const today = new Date().toLocaleString();
     localStorage.setItem(changeId + "time", today);
     editIDs.push(changeId);
@@ -111,10 +111,14 @@ export function inputClicked() {
   const name = getName.value;
   const pw = getPassword.value;
   const msg = getMessage.value;
-  // const movieID = ;
+  const movieID = localStorage.getItem("exportId");
   const today = new Date().toLocaleString();
   let ID = name;
-  if (localStorage.length !== 0) {
+  if (
+    localStorage.getItem("IDs") !== null &&
+    localStorage.getItem("IDs") !== undefined &&
+    localStorage.getItem("IDs") !== ""
+  ) {
     let IDs = localStorage.getItem("IDs").split(",");
     if (IDs.find((val) => val === ID)) {
       let a = 0;
@@ -140,7 +144,7 @@ export function inputClicked() {
   localStorage.setItem(ID + "name", name); // 나머지 정보 저장
   localStorage.setItem(ID + "pw", pw);
   localStorage.setItem(ID + "msg", msg);
-  // localStorage.setItem(ID + "movieID", movieID);
+  localStorage.setItem(ID + "movieID", movieID);
   localStorage.setItem(ID + "time", today);
 
   getName.value = null;
@@ -150,14 +154,14 @@ export function inputClicked() {
 
 function getReview() {
   // 리뷰 불러오기
-  if (localStorage.length === 0 || localStorage.getItem("IDs") === "") return;
+  if (localStorage.length <= 2 || localStorage.getItem("IDs") === "") return;
   let IDs = localStorage.getItem("IDs").split(","); // IDs 가져와서
   for (let i = 0; i < IDs.length; i++) {
     // ID에 맞는 것들 get 해서 출력
     if (IDs[i] === "") continue;
     const ID = IDs[i];
-    // const movieID = localStorage.getItem(ID + "movieID");
-    //if(movieID!==)continue;
+    const movieID = localStorage.getItem(ID + "movieID");
+    if (movieID !== localStorage.getItem("exportId")) continue;
     const name = localStorage.getItem(ID + "name");
     // const pw = localStorage.getItem(ID + "pw");
     const msg = localStorage.getItem(ID + "msg");
