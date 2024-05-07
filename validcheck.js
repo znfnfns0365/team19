@@ -12,13 +12,13 @@ const review_modify_error = document.querySelector(".review_modify_error");
 function idLength(value) {
   return value.length >= 2 && value.length <= 12;
 }
-// 아이디: 영어 or 숫자만 가능
+// 아이디: 한글 or 영어 or 숫자 가능
 function onlyNumberAndEnglish(str) {
-  return /^[A-Za-z0-9][A-Za-z0-9]*$/.test(str);
+  return /^[A-Za-z0-9ㄱ-ㅎ가-힣][A-Za-z0-9ㄱ-ㅎ가-힣]*$/.test(str);
 }
 // 비밀번호 : 8글자 이상, 영문, 숫자, 특수문자 사용
 function strongPassword(str) {
-  return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&~])[A-Za-z\d@$!%*#?&~]{8,}$/.test(str);
+  return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&~^])[A-Za-z\d@$!%*#?&~^]{8,}$/.test(str);
 }
 // 리뷰 아이디 이벤트
 review_name.onkeyup = function () {
@@ -66,8 +66,6 @@ review_btn.addEventListener("click", function () {
     inputClicked();
   }
 });
-
-// ///////////////////////////////////////////////////////////
 // 수정 리뷰 아이디 이벤트
 review_modify_name.onkeyup = function () {
   let return_value = false;
