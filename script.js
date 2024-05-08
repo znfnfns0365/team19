@@ -19,7 +19,7 @@ const options = {
 const fetchMovie = async () => {
   const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options);
   const dataResponsed = await data.json();
-  displayMovies(dataResponsed, "sortTitle");
+  displayMovies(dataResponsed, "sortTitle"); // 초기값은 title순으로 정렬
   makeEvent(dataResponsed);
 };
 
@@ -43,7 +43,7 @@ const search = (data) => {
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
   if (event.target.matches(".row")) {
-    stop
+    stop;
   } else if (event.target.matches(".card")) {
     localStorage.setItem(`exportId`, event.target.id);
     alert(`영화 id: ${event.target.id}`);
@@ -69,12 +69,15 @@ const makeEvent = (data) => {
   });
 
   sortTitle.addEventListener("click", function () {
+    // 제목순 정렬
     displayMovies(data, "sortTitle");
   });
   sortRating.addEventListener("click", function () {
+    // 평점순 정렬
     displayMovies(data, "sortRating");
   });
   sortRelease.addEventListener("click", function () {
+    // 개봉일순 정렬
     displayMovies(data, "sortRelease");
   });
 };
@@ -93,12 +96,14 @@ function displayMovies(data, howToSort) {
   editId.innerHTML = null;
   let sortedData = (sortStd) => {
     if (sortStd === "sortTitle") {
+      // 제목순
       return data.results.sort((a, b) => {
         if (a.title > b.title) return 1;
         else if (a.title < b.title) return -1;
         return 0;
       });
     } else if (sortStd === "sortRating") {
+      // 평점순
       return data.results.sort((a, b) => {
         if (a.vote_average < b.vote_average) return 1;
         else if (a.vote_average > b.vote_average) return -1;
@@ -113,7 +118,7 @@ function displayMovies(data, howToSort) {
       });
     }
   };
-  data = sortedData(howToSort);
+  data = sortedData(howToSort); // 정렬된 배열 반환
   for (let movie of data) {
     editId.innerHTML += getMovieCode(movie);
   }
