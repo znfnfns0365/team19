@@ -66,8 +66,6 @@ input[type="text"] {
   text-align: center;
 }
 
-
-
 .card-rating {
   margin: 0px 20px 0px 20px;
   text-align: center;
@@ -110,9 +108,21 @@ input[type="text"] {
 
 /* card end */
 
-
 .More_btn {
   position: absolute;
   bottom: 5px;
   height: 35px;
+}
+
+.sort {
+  color: black;
+  justify-content: flex-end;
+}
+
+.sort:hover {
+  background-color: #0056b3;
+}
+
+.sort:active {
+  background-color: #034185;
 }

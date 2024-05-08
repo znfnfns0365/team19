@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    background-color: wheat;
+}
+
+header {
+    background-image: url("../image/curtaincall.jpg");
+    background-position: center;
+    background-size: cover;
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.movieCard {
+    width: 1500px;
+    font-size: 36px;
+    position: relative;
+    left: 19%;
+    margin-bottom: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.cardText {
+    position: absolute;
+    text-align: left;
+    width: 40%;
+    left: 5px;
+    top: 50px;
+}
+
+img {
+    max-width: 40%; /* 수정 */
+    height: auto;
+    display: block;
+    margin-left: 700px;
+    margin-right: auto;
+}
+
+#review {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+    z-index: 999;
+    height: 90vh;
+}
+
+input {
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+#msg {
+    width: 1200px;
+}
+
+.comment {
+    padding: 10px;
+    width: 1200px;
+    margin-bottom: 20px;
+    border-top: 1px solid gray;
+    margin: 0 auto;
+    margin-left: -300px;
+    word-wrap: break-word;
+}
+
+.time {
+    font-style: italic;
+    font-size: 12px;
+    color: #888;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.container {
+    max-width: 885px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    max-width: 620px;
+    height: auto;
+}
+
+@media screen and (max-width: 1000px) {
+    .movieCard{
+        width: 510px;
+    }
+    .cardText {
+        width: 100%;
+        position: absolute;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        top: 800px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        margin-left: 5px;
+    }
+    #review {
+
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        cursor: pointer;
+        margin: 0 auto;
+        z-index: 999;
+        height: 90vh;
+    }
+    
+    
+    #msg {
+        width: 885px;
+    }
+    
+    .comment {
+        padding: 10px;
+        width: 885px;
+        margin-bottom: 20px;
+        border-top: 1px solid gray;
+        margin: 0 auto;
+        margin-left: -220px;
+        word-wrap: break-word;
+    }
+    
+}

@@ -3,8 +3,9 @@ const searchInput = document.getElementById("searchInput");
 const editId = document.getElementById("cardSpace");
 const cardsClick = document.querySelector(".cards");
 const titleClick = document.getElementById("title");
-
-// getElementById와 querySelector 차이 (ID를 불러올 때)
+const sortTitle = document.getElementById("sortTitle");
+const sortRating = document.getElementById("sortRating");
+const sortRelease = document.getElementById("sortRelease");
 
 const options = {
   method: "GET",
@@ -18,7 +19,7 @@ const options = {
 const fetchMovie = async () => {
   const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options);
   const dataResponsed = await data.json();
-  displayMovies(dataResponsed);
+  displayMovies(dataResponsed, "sortTitle"); // 초기값은 title순으로 정렬
   makeEvent(dataResponsed);
 };
 
@@ -33,8 +34,6 @@ const search = (data) => {
     return;
   }
   editId.innerHTML = null;
-  const element = document.querySelector(".cards");
-  // element.style.margin = "0px";
   for (let i = 0; i < filteredArr.length; i++) {
     editId.innerHTML += getMovieCode(filteredArr[i]);
   }
@@ -43,12 +42,16 @@ const search = (data) => {
 
 function cardClicked(event) {
   if (event.target === event.currentTarget) return;
-
-  // if (event.target.matches(".card")) {
-  //   alert(`영화 id: ${event.target.id}`);
-  // } else {
-  //   alert(`영화 id: ${event.target.parentNode.id}`);
-  // }
+  if (event.target.matches(".row")) {
+    stop;
+  } else if (event.target.matches(".card")) {
+    localStorage.setItem(`exportId`, event.target.id);
+    alert(`영화 id: ${event.target.id}`);
+  } else {
+    localStorage.setItem(`exportId`, event.target.parentNode.id);
+    window.location.href = "http://127.0.0.1:5501/moviereview.html";
+    // alert(`영화 id: ${event.target.parentNode.id}`);
+  }
 }
 
 const makeEvent = (data) => {
@@ -64,24 +67,61 @@ const makeEvent = (data) => {
   titleClick.addEventListener("click", () => {
     location.reload(true);
   });
+
+  sortTitle.addEventListener("click", function () {
+    // 제목순 정렬
+    displayMovies(data, "sortTitle");
+  });
+  sortRating.addEventListener("click", function () {
+    // 평점순 정렬
+    displayMovies(data, "sortRating");
+  });
+  sortRelease.addEventListener("click", function () {
+    // 개봉일순 정렬
+    displayMovies(data, "sortRelease");
+  });
 };
 
 function getMovieCode(movie) {
-  const { id, poster_path, title, overview, vote_average } = movie; // alert에서 밖에 "없이 띄어쓰기 하면 오류나는 이유..?
-  // const movieCode = `<div onclick="alert('영화 id: ' + '${id}')" id="${id}" class="card">
-  const movieCode = `<div id="${id}" class="card col-3 card_custom">
+  const { id, poster_path, title, overview, vote_average } = movie;
+  const movieCode = `<div id="${id}" class="card col-md-4 col-sm-12 card_custom">
           <h3 class="card-title">${title}</h3>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top" >
-          
           
         </div>`;
   return movieCode;
 }
 
-function displayMovies(data) {
-  data.results.forEach((movie) => {
+function displayMovies(data, howToSort) {
+  editId.innerHTML = null;
+  let sortedData = (sortStd) => {
+    if (sortStd === "sortTitle") {
+      // 제목순
+      return data.results.sort((a, b) => {
+        if (a.title > b.title) return 1;
+        else if (a.title < b.title) return -1;
+        return 0;
+      });
+    } else if (sortStd === "sortRating") {
+      // 평점순
+      return data.results.sort((a, b) => {
+        if (a.vote_average < b.vote_average) return 1;
+        else if (a.vote_average > b.vote_average) return -1;
+        return 0;
+      });
+    } else {
+      // 개봉일순
+      return data.results.sort((a, b) => {
+        if (a.release_date < b.release_date) return 1;
+        else if (a.release_date > b.release_date) return -1;
+        return 0;
+      });
+    }
+  };
+  data = sortedData(howToSort); // 정렬된 배열 반환
+  for (let movie of data) {
     editId.innerHTML += getMovieCode(movie);
-  });
+  }
 }
 
 window.onload = function () {
