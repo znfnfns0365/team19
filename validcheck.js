@@ -61,7 +61,7 @@ review_btn.addEventListener("click", function () {
     alert("비밀번호 재확인 요망");
   } else {
     alert("정상적으로 저장되었습니다.");
-    inputClicked();
+    inputClicked(); // import한 reviewEdit.js 호출 -> reviewEdit.js로 이동
   }
 });
 // 수정 리뷰 아이디 이벤트
